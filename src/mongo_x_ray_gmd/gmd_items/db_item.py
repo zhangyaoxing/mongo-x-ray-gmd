@@ -12,9 +12,9 @@ from typing import Any, Optional
 
 from x_ray.parsers.base_parser import BaseParser
 
-from x_ray_gmd.gmd_items.base_item import BaseItem
-from x_ray_gmd.parsers.db_parser import DBParser
-from x_ray_gmd.shared import GmdEvents
+from mongo_x_ray_gmd.gmd_items.base_item import BaseItem
+from mongo_x_ray_gmd.parsers.db_parser import DBParser
+from mongo_x_ray_gmd.shared import GmdEvents
 
 
 class DBItem(BaseItem):

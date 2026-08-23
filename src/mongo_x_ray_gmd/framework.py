@@ -15,15 +15,15 @@ from x_ray.framework import BaseFramework
 from x_ray.shared import str_to_md_id, to_json
 from x_ray.utils import bold, cyan, env, green, load_classes, red, yellow
 
-from x_ray_gmd.gmd_items.summary_item import SummaryItem
-from x_ray_gmd.shared import load_json
+from mongo_x_ray_gmd.gmd_items.summary_item import SummaryItem
+from mongo_x_ray_gmd.shared import load_json
 
-GMD_CLASSES = load_classes("x_ray_gmd.gmd_items")
+GMD_CLASSES = load_classes("mongo_x_ray_gmd.gmd_items")
 
 
 class Framework(BaseFramework):
     template_module = "gmd"
-    template_package = "x_ray_gmd"
+    template_package = "mongo_x_ray_gmd"
 
     def __init__(self, file_path: str, config: dict):
         super().__init__(config)

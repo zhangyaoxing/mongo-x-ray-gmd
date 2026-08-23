@@ -4,8 +4,8 @@ from mongo_x_ray_hc.parsers.build_info_parser import BuildInfoParser
 from mongo_x_ray_hc.rules.version_eol_rule import VersionEOLRule
 from x_ray.parsers.base_parser import BaseParser
 
-from x_ray_gmd.gmd_items.base_item import BaseItem
-from x_ray_gmd.shared import GmdEvents
+from mongo_x_ray_gmd.gmd_items.base_item import BaseItem
+from mongo_x_ray_gmd.shared import GmdEvents
 
 
 class BuildInfoItem(BaseItem):

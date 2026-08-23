@@ -1,4 +1,4 @@
-from x_ray_gmd.parsers.sh_details_parser import SHDetailsParser  # type: ignore
+from mongo_x_ray_gmd.parsers.sh_details_parser import SHDetailsParser  # type: ignore
 
 GMD_ITEM = {
     "shards": [

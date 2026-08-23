@@ -1,4 +1,4 @@
-from x_ray_gmd.parsers.db_parser import DBParser  # type: ignore
+from mongo_x_ray_gmd.parsers.db_parser import DBParser  # type: ignore
 
 GMD_SHARDED_DBS = [
     {

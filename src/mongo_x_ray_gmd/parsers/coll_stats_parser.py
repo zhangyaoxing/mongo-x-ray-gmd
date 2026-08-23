@@ -1,7 +1,7 @@
 from x_ray.utils import escape_markdown, format_json_md, format_size
 
-from x_ray_gmd.parsers.base_parser import BaseParser
-from x_ray_gmd.shared import ShardNameMapper
+from mongo_x_ray_gmd.parsers.base_parser import BaseParser
+from mongo_x_ray_gmd.shared import ShardNameMapper
 
 
 class CollStatsParser(BaseParser):

@@ -4,8 +4,8 @@ from mongo_x_ray_hc.rules.host_info_rule import HostInfoRule
 from mongo_x_ray_hc.rules.numa_rule import NumaRule
 from x_ray.parsers.base_parser import BaseParser
 
-from x_ray_gmd.gmd_items.base_item import BaseItem
-from x_ray_gmd.shared import GmdEvents
+from mongo_x_ray_gmd.gmd_items.base_item import BaseItem
+from mongo_x_ray_gmd.shared import GmdEvents
 
 
 class HostInfoItem(BaseItem):

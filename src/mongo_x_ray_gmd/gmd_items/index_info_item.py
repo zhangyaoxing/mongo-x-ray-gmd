@@ -16,8 +16,8 @@ from mongo_x_ray_hc.rules.index_rule import IndexRule
 from x_ray.parsers.base_parser import BaseParser
 from x_ray.utils import as_utc_datetime
 
-from x_ray_gmd.gmd_items.base_item import BaseItem
-from x_ray_gmd.shared import GmdEvents
+from mongo_x_ray_gmd.gmd_items.base_item import BaseItem
+from mongo_x_ray_gmd.shared import GmdEvents
 
 
 class IndexInfoItem(BaseItem):

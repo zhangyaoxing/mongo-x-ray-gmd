@@ -15,9 +15,9 @@ from mongo_x_ray_hc.rules.fragmentation_rule import FragmentationRule
 from x_ray.parsers.base_parser import BaseParser
 from x_ray.utils import yellow
 
-from x_ray_gmd.gmd_items.base_item import BaseItem
-from x_ray_gmd.parsers.coll_stats_parser import CollStatsParser
-from x_ray_gmd.shared import GmdEvents
+from mongo_x_ray_gmd.gmd_items.base_item import BaseItem
+from mongo_x_ray_gmd.parsers.coll_stats_parser import CollStatsParser
+from mongo_x_ray_gmd.shared import GmdEvents
 
 
 class CollInfoItem(BaseItem):

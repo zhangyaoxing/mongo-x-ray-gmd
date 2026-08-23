@@ -1,4 +1,4 @@
-from x_ray_gmd.shared import ShardNameMapper, load_json  # type: ignore
+from mongo_x_ray_gmd.shared import ShardNameMapper, load_json  # type: ignore
 
 
 def test_shard_name_mapper():

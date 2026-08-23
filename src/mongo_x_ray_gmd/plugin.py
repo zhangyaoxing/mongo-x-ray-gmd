@@ -15,7 +15,7 @@ from pathlib import Path
 from x_ray.plugin import Plugin, open_report
 from x_ray.utils import load_config
 
-from x_ray_gmd.framework import Framework
+from mongo_x_ray_gmd.framework import Framework
 
 logger = logging.getLogger(__name__)
 

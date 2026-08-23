@@ -13,7 +13,7 @@ import html as html_mod
 from mongo_x_ray_hc.check_items.base_item import colorize_severity
 from x_ray.shared import SEVERITY
 
-from x_ray_gmd.gmd_items.base_item import BaseItem
+from mongo_x_ray_gmd.gmd_items.base_item import BaseItem
 
 
 class SummaryItem:

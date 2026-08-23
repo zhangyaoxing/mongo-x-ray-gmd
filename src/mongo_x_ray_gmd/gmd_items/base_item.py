@@ -11,7 +11,7 @@ from x_ray.shared import SEVERITY
 from x_ray.utils import bold, to_ejson, yellow
 from x_ray.version import Version
 
-from x_ray_gmd.shared import GmdEvents
+from mongo_x_ray_gmd.shared import GmdEvents
 
 
 class BaseItem:  # pylint: disable=too-many-instance-attributes

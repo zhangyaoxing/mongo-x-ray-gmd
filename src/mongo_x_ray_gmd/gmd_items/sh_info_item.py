@@ -14,9 +14,9 @@ from mongo_x_ray_hc.parsers.sh_overview_parser import SHOverviewParser
 from mongo_x_ray_hc.rules.shard_mongos_rule import ShardMongosRule
 from x_ray.parsers.base_parser import BaseParser
 
-from x_ray_gmd.gmd_items.base_item import BaseItem
-from x_ray_gmd.parsers.sh_details_parser import SHDetailsParser
-from x_ray_gmd.shared import GmdEvents
+from mongo_x_ray_gmd.gmd_items.base_item import BaseItem
+from mongo_x_ray_gmd.parsers.sh_details_parser import SHDetailsParser
+from mongo_x_ray_gmd.shared import GmdEvents
 
 
 class SHInfoItem(BaseItem):

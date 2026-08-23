@@ -9,4 +9,4 @@ class BaseParser(HCBaseParser):
     """
 
     TEMPLATE_FOLDER = os.path.join("templates", "gmd", "snippets")
-    TEMPLATE_PACKAGE = "x_ray_gmd"
+    TEMPLATE_PACKAGE = "mongo_x_ray_gmd"

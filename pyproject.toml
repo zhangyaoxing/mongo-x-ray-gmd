@@ -14,14 +14,14 @@ dependencies = [
 ]
 
 [project.entry-points."x_ray.plugins"]
-gmd = "x_ray_gmd.plugin:GmdPlugin"
+gmd = "mongo_x_ray_gmd.plugin:GmdPlugin"
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["x_ray_gmd*"]
+include = ["mongo_x_ray_gmd*"]
 
 [tool.setuptools.package-data]
-"x_ray_gmd" = ["templates/**/*"]
+"mongo_x_ray_gmd" = ["templates/**/*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
