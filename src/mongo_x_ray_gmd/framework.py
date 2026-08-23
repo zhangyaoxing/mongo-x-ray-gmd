@@ -11,9 +11,9 @@ THIS MATERIAL IS PROVIDED "AS IS" WITHOUT WARRANTY OR LIABILITY.
 from datetime import datetime, timezone
 from typing import TextIO
 
-from x_ray.framework import BaseFramework
-from x_ray.shared import str_to_md_id, to_json
-from x_ray.utils import bold, cyan, env, green, load_classes, red, yellow
+from mongo_x_ray.framework import BaseFramework
+from mongo_x_ray.shared import str_to_md_id, to_json
+from mongo_x_ray.utils import bold, cyan, env, green, load_classes, red, yellow
 
 from mongo_x_ray_gmd.gmd_items.summary_item import SummaryItem
 from mongo_x_ray_gmd.shared import load_json
@@ -97,7 +97,7 @@ class Framework(BaseFramework):
         # Enrich all test results with matched risks before building summary
         for item in self._items:
             try:
-                from x_ray.risk_register import enrich_test_results  # pylint: disable=import-outside-toplevel
+                from mongo_x_ray.risk_register import enrich_test_results  # pylint: disable=import-outside-toplevel
                 enrich_test_results(item._test_result)  # pylint: disable=protected-access
             except Exception:  # pylint: disable=broad-exception-caught
                 self._logger.debug("Risk register matching not available", exc_info=True)

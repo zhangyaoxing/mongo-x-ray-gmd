@@ -10,7 +10,7 @@ THIS MATERIAL IS PROVIDED "AS IS" WITHOUT WARRANTY OR LIABILITY.
 
 from typing import Any, Optional
 
-from x_ray.parsers.base_parser import BaseParser
+from mongo_x_ray.parsers.base_parser import BaseParser
 
 from mongo_x_ray_gmd.gmd_items.base_item import BaseItem
 from mongo_x_ray_gmd.parsers.db_parser import DBParser

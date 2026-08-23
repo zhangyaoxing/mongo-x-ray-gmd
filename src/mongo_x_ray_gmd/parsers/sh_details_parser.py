@@ -1,4 +1,4 @@
-from x_ray.parsers.base_parser import BaseParser
+from mongo_x_ray.parsers.base_parser import BaseParser
 
 
 class SHDetailsParser(BaseParser):

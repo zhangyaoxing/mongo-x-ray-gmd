@@ -10,8 +10,8 @@ THIS MATERIAL IS PROVIDED "AS IS" WITHOUT WARRANTY OR LIABILITY.
 
 import html as html_mod
 
+from mongo_x_ray.shared import SEVERITY
 from mongo_x_ray_hc.check_items.base_item import colorize_severity
-from x_ray.shared import SEVERITY
 
 from mongo_x_ray_gmd.gmd_items.base_item import BaseItem
 

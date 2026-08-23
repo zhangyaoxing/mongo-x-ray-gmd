@@ -13,7 +13,7 @@ dependencies = [
   "mongo-x-ray-hc>=1.5.3",
 ]
 
-[project.entry-points."x_ray.plugins"]
+[project.entry-points."mongo_x_ray.plugins"]
 gmd = "mongo_x_ray_gmd.plugin:GmdPlugin"
 
 [tool.setuptools.packages.find]

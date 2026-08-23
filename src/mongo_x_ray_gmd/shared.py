@@ -5,7 +5,7 @@ from typing import Iterable
 
 from bson.json_util import object_hook
 from bson.timestamp import Timestamp
-from x_ray.utils import to_ejson
+from mongo_x_ray.utils import to_ejson
 
 
 class ShardNameMapper:

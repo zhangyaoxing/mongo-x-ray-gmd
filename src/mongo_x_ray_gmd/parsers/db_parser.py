@@ -1,6 +1,6 @@
 from typing import Optional
 
-from x_ray.utils import format_size
+from mongo_x_ray.utils import format_size
 
 from mongo_x_ray_gmd.parsers.base_parser import BaseParser
 from mongo_x_ray_gmd.shared import ShardNameMapper

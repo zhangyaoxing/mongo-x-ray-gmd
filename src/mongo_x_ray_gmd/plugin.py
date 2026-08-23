@@ -12,8 +12,8 @@ import logging
 from copy import deepcopy
 from pathlib import Path
 
-from x_ray.plugin import Plugin, open_report
-from x_ray.utils import load_config
+from mongo_x_ray.plugin import Plugin, open_report
+from mongo_x_ray.utils import load_config
 
 from mongo_x_ray_gmd.framework import Framework
 

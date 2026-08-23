@@ -20,7 +20,7 @@ import pytest
 
 pytest.importorskip("playwright")  # pylint: disable=wrong-import-position
 
-from x_ray.utils import load_config
+from mongo_x_ray.utils import load_config
 
 from mongo_x_ray_gmd.framework import Framework as GMDAnalysisFramework
 
