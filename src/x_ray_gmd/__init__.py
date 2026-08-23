@@ -1,0 +1,1 @@
+"""MongoDB getMongoData analysis package."""
