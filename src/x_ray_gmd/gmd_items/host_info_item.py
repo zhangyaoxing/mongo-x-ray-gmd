@@ -1,8 +1,8 @@
+from mongo_x_ray_hc.parsers.host_info_parser import HostInfoParser
+from mongo_x_ray_hc.rules.fs_type_rule import FSTypeRule
+from mongo_x_ray_hc.rules.host_info_rule import HostInfoRule
+from mongo_x_ray_hc.rules.numa_rule import NumaRule
 from x_ray.parsers.base_parser import BaseParser
-from x_ray_healthcheck.parsers.host_info_parser import HostInfoParser
-from x_ray_healthcheck.rules.fs_type_rule import FSTypeRule
-from x_ray_healthcheck.rules.host_info_rule import HostInfoRule
-from x_ray_healthcheck.rules.numa_rule import NumaRule
 
 from x_ray_gmd.gmd_items.base_item import BaseItem
 from x_ray_gmd.shared import GmdEvents

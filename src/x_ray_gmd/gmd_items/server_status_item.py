@@ -1,12 +1,12 @@
 from typing import Any, Optional
 
+from mongo_x_ray_hc.parsers.cache_parser import CacheParser
+from mongo_x_ray_hc.parsers.conn_parser import ConnParser
+from mongo_x_ray_hc.parsers.query_targeting_parser import QueryTargetingParser
+from mongo_x_ray_hc.rules.cache_rule import CacheRule
+from mongo_x_ray_hc.rules.connections_rule import ConnectionsRule
+from mongo_x_ray_hc.rules.query_targeting_rule import QueryTargetingRule
 from x_ray.parsers.base_parser import BaseParser
-from x_ray_healthcheck.parsers.cache_parser import CacheParser
-from x_ray_healthcheck.parsers.conn_parser import ConnParser
-from x_ray_healthcheck.parsers.query_targeting_parser import QueryTargetingParser
-from x_ray_healthcheck.rules.cache_rule import CacheRule
-from x_ray_healthcheck.rules.connections_rule import ConnectionsRule
-from x_ray_healthcheck.rules.query_targeting_rule import QueryTargetingRule
 
 from x_ray_gmd.gmd_items.base_item import BaseItem
 from x_ray_gmd.shared import GmdEvents

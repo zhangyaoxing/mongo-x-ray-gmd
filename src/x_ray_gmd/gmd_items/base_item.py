@@ -5,11 +5,11 @@ from abc import abstractmethod
 from typing import Callable, Optional
 
 from bson import json_util
+from mongo_x_ray_hc.check_items.base_item import colorize_severity
+from mongo_x_ray_hc.rules.base_rule import BaseRule
 from x_ray.shared import SEVERITY
 from x_ray.utils import bold, to_ejson, yellow
 from x_ray.version import Version
-from x_ray_healthcheck.check_items.base_item import colorize_severity
-from x_ray_healthcheck.rules.base_rule import BaseRule
 
 from x_ray_gmd.shared import GmdEvents
 

@@ -10,9 +10,9 @@ THIS MATERIAL IS PROVIDED "AS IS" WITHOUT WARRANTY OR LIABILITY.
 
 from typing import Optional
 
+from mongo_x_ray_hc.parsers.security_parser import SecurityParser
+from mongo_x_ray_hc.rules.security_rule import SecurityRule
 from x_ray.parsers.base_parser import BaseParser
-from x_ray_healthcheck.parsers.security_parser import SecurityParser
-from x_ray_healthcheck.rules.security_rule import SecurityRule
 
 from x_ray_gmd.gmd_items.base_item import BaseItem
 from x_ray_gmd.shared import GmdEvents

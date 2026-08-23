@@ -11,10 +11,10 @@ THIS MATERIAL IS PROVIDED "AS IS" WITHOUT WARRANTY OR LIABILITY.
 from datetime import datetime, timezone
 
 from dateutil import parser
+from mongo_x_ray_hc.parsers.index_info_parser import IndexInfoParser
+from mongo_x_ray_hc.rules.index_rule import IndexRule
 from x_ray.parsers.base_parser import BaseParser
 from x_ray.utils import as_utc_datetime
-from x_ray_healthcheck.parsers.index_info_parser import IndexInfoParser
-from x_ray_healthcheck.rules.index_rule import IndexRule
 
 from x_ray_gmd.gmd_items.base_item import BaseItem
 from x_ray_gmd.shared import GmdEvents

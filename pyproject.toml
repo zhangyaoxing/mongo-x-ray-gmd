@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.10,<4"
 dependencies = [
   "mongo-x-ray>=1.5.3",
-  "mongo-x-ray-healthcheck>=1.5.3",
+  "mongo-x-ray-hc>=1.5.3",
 ]
 
 [project.entry-points."x_ray.plugins"]
