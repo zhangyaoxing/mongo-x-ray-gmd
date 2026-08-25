@@ -4,8 +4,6 @@
 
 getMongoData analysis plugin for [x-ray](https://github.com/mongodb-ps/ce-mongo-x-ray).
 
-This plugin depends on `mongo-x-ray-hc`.
-
 ## Install
 
 ```bash
@@ -18,6 +16,21 @@ pip install mongo-x-ray mongo-x-ray-hc mongo-x-ray-gmd
 x-ray gmd /path/to/getMongoData-output.json
 x-ray gmd /path/to/getMongoData-output.json -f html -o /path/to/output/
 ```
+
+## Parameters
+
+```bash
+x-ray gmd [-h] [-s CHECKSET] [-o OUTPUT] [-f {markdown,html,pdf}] [--no-browser]
+          gmd_file
+```
+
+| Argument | Description | Default |
+| --- | --- | --- |
+| `gmd_file` | Path to the getMongoData output JSON file. | required |
+| `-s, --checkset` | Checkset to run. | `default` |
+| `-o, --output` | Output folder path. | `output/` |
+| `-f, --format` | Output format: `markdown`, `html` or `pdf` (PDF also keeps Markdown and HTML). | `html` |
+| `--no-browser` | Do not open the generated report in the browser. | `false` |
 
 ## Development
 
