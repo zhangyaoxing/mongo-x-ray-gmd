@@ -17,7 +17,10 @@ from mongo_x_ray_gmd.gmd_items.base_item import BaseItem
 
 
 class SummaryItem:
-    def __init__(self) -> None:
+    def __init__(self, risk_available: bool = True) -> None:
+        # Whether the risk register was detected; controls the Known Risks
+        # column of the By Category summary table.
+        self._risk_available = risk_available
         self._summary_severity: dict[SEVERITY, int] = {
             SEVERITY.HIGH: 0,
             SEVERITY.MEDIUM: 0,
@@ -57,12 +60,20 @@ class SummaryItem:
             f"|{self._summary_severity[SEVERITY.HIGH]}|{self._summary_severity[SEVERITY.MEDIUM]}|{self._summary_severity[SEVERITY.LOW]}|{self._summary_severity[SEVERITY.INFO]}|\n\n"
         )
         output.write("#### By Category\n\n")
-        output.write(
-            '| <span data-sortable="true">Category</span>{300} '
-            '| <span data-sortable="true">Count</span>{100} '
-            '| <span data-sortable="false">Known Risks</span>{150} |\n'
-        )
-        output.write("|---:|:---:|:---|\n")
+        # The Known Risks column only makes sense when a risk register was
+        # detected, so it is omitted from the summary table otherwise.
+        if self._risk_available:
+            output.write(
+                '| <span data-sortable="true">Category</span>{300} '
+                '| <span data-sortable="true">Count</span>{100} '
+                '| <span data-sortable="false">Known Risks</span>{150} |\n'
+            )
+            output.write("|---:|:---:|:---|\n")
+        else:
+            output.write(
+                '| <span data-sortable="true">Category</span>{300} | <span data-sortable="true">Count</span>{100} |\n'
+            )
+            output.write("|---:|:---:|\n")
         for title, count in self._summary_title.items():
             risk_html = ""
             mr = self._title_risk.get(title)
@@ -76,5 +87,8 @@ class SummaryItem:
                     f'<span class="risk-name">{rname}</span>'
                     f"{rdesc}</span></span>"
                 )
-            output.write(f'|{title}|<span data-sort-value="{count}"><strong>{count}</strong></span>|{risk_html}|\n')
+            if self._risk_available:
+                output.write(f'|{title}|<span data-sort-value="{count}"><strong>{count}</strong></span>|{risk_html}|\n')
+            else:
+                output.write(f'|{title}|<span data-sort-value="{count}"><strong>{count}</strong></span>|\n')
         output.write("\n")

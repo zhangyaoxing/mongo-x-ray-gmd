@@ -95,14 +95,16 @@ class Framework(BaseFramework):
         output.write("## 1 Review Test Results\n\n")
         output.write("### Overview\n\n")
         # Enrich all test results with matched risks before building summary
-        for item in self._items:
-            try:
-                from mongo_x_ray_risk import enrich_test_results
+        risk_available = False
+        try:
+            from mongo_x_ray_risk import enrich_test_results, has_risks
 
+            risk_available = has_risks()
+            for item in self._items:
                 enrich_test_results(item._test_result)
-            except Exception:
-                self._logger.debug("Risk register matching not available", exc_info=True)
-        summary_item = SummaryItem()
+        except Exception:
+            self._logger.debug("Risk register matching not available", exc_info=True)
+        summary_item = SummaryItem(risk_available=risk_available)
         summary_item.summarize(self._items)
         summary_item.overview(output)
         for i, item in enumerate(self._items):
