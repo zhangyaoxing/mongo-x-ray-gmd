@@ -32,6 +32,21 @@ x-ray gmd [-h] [-s CHECKSET] [-o OUTPUT] [-f {markdown,html,pdf}] [--no-browser]
 | `-f, --format` | Output format: `markdown`, `html` or `pdf` (PDF also keeps Markdown and HTML). | `html` |
 | `--no-browser` | Do not open the generated report in the browser. | `false` |
 
+## Analysis Items
+
+| Item | Purpose |
+| --- | --- |
+| `SummaryItem` | Overall summary of the getMongoData output. |
+| `BuildInfoItem` | Build information (reuses the healthcheck build info parser and version EOL rule). |
+| `CollInfoItem` | Collection statistics: sizes and fragmentation. |
+| `DBItem` | Database-level information. |
+| `HostInfoItem` | Host filesystem type, NUMA settings and host properties. |
+| `IndexInfoItem` | Index information. |
+| `RSInfoItem` | Replica set topology, oplog window and status. |
+| `SecurityItem` | Security posture. |
+| `ServerStatusItem` | Cache, connections and query targeting status. |
+| `SHInfoItem` | Sharding architecture and shard details. |
+
 ## Development
 
 Requires Python 3.10+, the [mongo-x-ray](https://github.com/mongodb-ps/ce-mongo-x-ray) core and the
