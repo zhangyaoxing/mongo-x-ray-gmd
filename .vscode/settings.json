@@ -5,9 +5,12 @@
         "${workspaceFolder}/../ce-mongo-x-ray/src",
         "${workspaceFolder}/../mongo-x-ray-hc/src"
     ],
-    "ruff.lint.run": "onSave",
     "ruff.format": true,
     "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.ruff": "explicit",
+        "source.organizeImports.ruff": "explicit"
+    },
     "python.testing.pytestEnabled": true,
     "python.testing.pytestPath": "${workspaceFolder}/../ce-mongo-x-ray/.venv/bin/pytest",
     "python.testing.pytestArgs": [
