@@ -49,7 +49,7 @@ x-ray gmd [-h] [-s CHECKSET] [-o OUTPUT] [-f {markdown,html,pdf}] [--no-browser]
 
 ## Development
 
-Requires Python 3.10+, the [mongo-x-ray](https://github.com/mongodb-ps/ce-mongo-x-ray) core and the
+Requires Python 3.10+, MongoDB 5.0 or later, the [mongo-x-ray](https://github.com/mongodb-ps/ce-mongo-x-ray) core and the
 [mongo-x-ray-hc](https://github.com/zhangyaoxing/mongo-x-ray-hc) plugin (gmd reuses its parsers and rules).
 
 ```bash
