@@ -57,6 +57,7 @@ EXPECTED_SECTIONS = ["1 Review Test Results", "2 Review Raw Results"] + [
     f"{part}{name}" for i, name in enumerate(GMD_ITEMS, 1) for part in (f"1.{i} ", f"2.{i} Review ")
 ]
 
+
 # The sharded-cluster report has no replica-set info and vice versa. The
 # cluster created by prepare_cluster.sh is a replica set by default; with
 # GMD_TOPOLOGY=sh the expectations are reversed.

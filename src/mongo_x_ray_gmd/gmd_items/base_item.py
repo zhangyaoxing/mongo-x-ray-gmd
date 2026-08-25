@@ -156,15 +156,11 @@ class BaseItem:  # pylint: disable=too-many-instance-attributes
                     f' <span class="risk-badge">RISK-{risk_id}'
                     f'<span class="risk-tooltip">'
                     f'<span class="risk-name">{risk_name}</span>'
-                    f'{risk_desc}'
-                    f'</span></span>'
+                    f"{risk_desc}"
+                    f"</span></span>"
                 )
             output.write(
-                f"| **{idx + 1}** "
-                f"| `{item['host']}` "
-                f"| {severity_cell} "
-                f"| {category_cell} "
-                f"| {item['message']} |\n"
+                f"| **{idx + 1}** | `{item['host']}` | {severity_cell} | {category_cell} | {item['message']} |\n"
             )
         output.write("\n")
 

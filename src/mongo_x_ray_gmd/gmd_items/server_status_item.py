@@ -44,14 +44,12 @@ class ServerStatusItem(BaseItem):
 
         self.watch_one(GmdEvents.SERVER_STATUS_INFO, get_server_status)
 
-        self.watch_all(
-            {GmdEvents.SERVER_STATUS_INFO, GmdEvents.ISMASTER, GmdEvents.HOST_INFO}, process_server_status
-        )
+        self.watch_all({GmdEvents.SERVER_STATUS_INFO, GmdEvents.ISMASTER, GmdEvents.HOST_INFO}, process_server_status)
 
     def review_results_markdown(self, output) -> None:
-        assert (
-            self._server_status is not None
-        ), f"GMD subsection {GmdEvents.SERVER_STATUS_INFO.value} should be available for review."
+        assert self._server_status is not None, (
+            f"GMD subsection {GmdEvents.SERVER_STATUS_INFO.value} should be available for review."
+        )
 
         if self._query_targeting is not None:
             parser: BaseParser = QueryTargetingParser()

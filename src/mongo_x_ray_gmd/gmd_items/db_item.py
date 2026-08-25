@@ -62,12 +62,12 @@ class DBItem(BaseItem):
         self.watch_one(GmdEvents.DATABASE_STATS, get_db_stats)
 
     def review_results_markdown(self, output) -> None:
-        assert (
-            self._databases is not None
-        ), f"GMD subsection {GmdEvents.LIST_OF_DATABASES.value} should be available for review."
-        assert (
-            self._db_stats is not None
-        ), f"GMD subsection {GmdEvents.DATABASE_STATS.value} should be available for review."
+        assert self._databases is not None, (
+            f"GMD subsection {GmdEvents.LIST_OF_DATABASES.value} should be available for review."
+        )
+        assert self._db_stats is not None, (
+            f"GMD subsection {GmdEvents.DATABASE_STATS.value} should be available for review."
+        )
         parser: BaseParser = DBParser()
         parsed_data = parser.markdown(
             {

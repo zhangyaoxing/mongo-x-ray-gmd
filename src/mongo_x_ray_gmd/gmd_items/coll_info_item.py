@@ -87,9 +87,9 @@ class CollInfoItem(BaseItem):
         self.watch_one(GmdEvents.SHARDED_DATABASES, _get_shard_key_info)
 
     def review_results_markdown(self, output) -> None:
-        assert (
-            len(self._collections_stats) > 0
-        ), f"GMD subsection {GmdEvents.COLLECTION_STATS.value} should be available for review."
+        assert len(self._collections_stats) > 0, (
+            f"GMD subsection {GmdEvents.COLLECTION_STATS.value} should be available for review."
+        )
 
         coll_stats: list[dict[str, Any]] = []
         for stats in self._collections_stats:

@@ -98,6 +98,7 @@ class Framework(BaseFramework):
         for item in self._items:
             try:
                 from mongo_x_ray.risk_register import enrich_test_results  # pylint: disable=import-outside-toplevel
+
                 enrich_test_results(item._test_result)  # pylint: disable=protected-access
             except Exception:  # pylint: disable=broad-exception-caught
                 self._logger.debug("Risk register matching not available", exc_info=True)

@@ -63,9 +63,9 @@ class SHInfoItem(BaseItem):
         # Type assertions: if all events fired, these should not be None
         assert self._shards is not None, f"GMD subsection {GmdEvents.SHARDS.value} should be available for review."
         assert self._routers is not None, f"GMD subsection {GmdEvents.ROUTERS.value} should be available for review."
-        assert (
-            self._csrs is not None
-        ), f"GMD subsection {GmdEvents.SERVER_STATUS_INFO.value} should be available for review."
+        assert self._csrs is not None, (
+            f"GMD subsection {GmdEvents.SERVER_STATUS_INFO.value} should be available for review."
+        )
 
         # Convert the data to the format required by the markdown parser
         data = {

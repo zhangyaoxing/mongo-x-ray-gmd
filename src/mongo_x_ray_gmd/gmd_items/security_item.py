@@ -43,9 +43,9 @@ class SecurityItem(BaseItem):
         )
 
     def review_results_markdown(self, output) -> None:
-        assert (
-            self._command_line_opts is not None
-        ), f"GMD subsection {GmdEvents.COMMAND_LINE_INFO.value} should be available for review."
+        assert self._command_line_opts is not None, (
+            f"GMD subsection {GmdEvents.COMMAND_LINE_INFO.value} should be available for review."
+        )
         parser: BaseParser = SecurityParser()
         parsed_output = parser.markdown(
             [

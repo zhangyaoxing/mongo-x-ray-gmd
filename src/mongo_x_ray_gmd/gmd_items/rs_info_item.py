@@ -80,18 +80,18 @@ class RSInfoItem(BaseItem):
         if self._rs_config is None and self._rs_status is None and self._replication_info is None:
             self._logger.info("No replica set information is available. Skipping Replica Set Architecture section.")
             return
-        assert (
-            self._rs_config is not None
-        ), f"GMD subsection {GmdEvents.REPLICA_SET_CONFIG.value} should be available for review."
-        assert (
-            self._rs_status is not None
-        ), f"GMD subsection {GmdEvents.REPLICA_STATUS.value} should be available for review."
-        assert (
-            self._replication_info is not None
-        ), f"GMD subsection {GmdEvents.REPLICA_INFO.value} should be available for review."
-        assert (
-            self._server_status is not None
-        ), f"GMD subsection {GmdEvents.SERVER_STATUS_INFO.value} should be available for review."
+        assert self._rs_config is not None, (
+            f"GMD subsection {GmdEvents.REPLICA_SET_CONFIG.value} should be available for review."
+        )
+        assert self._rs_status is not None, (
+            f"GMD subsection {GmdEvents.REPLICA_STATUS.value} should be available for review."
+        )
+        assert self._replication_info is not None, (
+            f"GMD subsection {GmdEvents.REPLICA_INFO.value} should be available for review."
+        )
+        assert self._server_status is not None, (
+            f"GMD subsection {GmdEvents.SERVER_STATUS_INFO.value} should be available for review."
+        )
         parsed_output = RSOverviewParser().markdown([(self._rs_config["_id"], self._rs_config)])
         output.write(parsed_output)
         data = {
