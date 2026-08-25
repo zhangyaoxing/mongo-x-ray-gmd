@@ -17,6 +17,14 @@ x-ray gmd /path/to/getMongoData-output.json
 x-ray gmd /path/to/getMongoData-output.json -f html -o /path/to/output/
 ```
 
+## Compatibility
+
+Supports MongoDB 5.0 and above on all topologies:
+
+| Replica Set | Sharded Cluster | Standalone |
+| :---------: | :-------------: | :--------: |
+| ✅ | ✅ | ✅ |
+
 ## Parameters
 
 ```bash
