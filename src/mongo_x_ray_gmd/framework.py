@@ -97,7 +97,7 @@ class Framework(BaseFramework):
         # Enrich all test results with matched risks before building summary
         for item in self._items:
             try:
-                from mongo_x_ray.risk_register import enrich_test_results
+                from mongo_x_ray_risk_register import enrich_test_results
 
                 enrich_test_results(item._test_result)
             except Exception:
