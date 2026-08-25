@@ -1,3 +1,29 @@
 # mongo-x-ray-gmd
 
-getMongoData analysis plugin for x-ray.
+[![CI](https://github.com/zhangyaoxing/mongo-x-ray-gmd/actions/workflows/ci.yml/badge.svg)](https://github.com/zhangyaoxing/mongo-x-ray-gmd/actions/workflows/ci.yml)
+
+getMongoData analysis plugin for [x-ray](https://github.com/mongodb-ps/ce-mongo-x-ray).
+
+## Install
+
+```bash
+pip install mongo-x-ray mongo-x-ray-hc mongo-x-ray-gmd
+```
+
+## Usage
+
+```bash
+x-ray gmd /path/to/getMongoData-output.json
+x-ray gmd /path/to/getMongoData-output.json -f html -o /path/to/output/
+```
+
+## Development
+
+Requires Python 3.10+, the [mongo-x-ray](https://github.com/mongodb-ps/ce-mongo-x-ray) core and the
+[mongo-x-ray-hc](https://github.com/zhangyaoxing/mongo-x-ray-hc) plugin (gmd reuses its parsers and rules).
+
+```bash
+make unit-test   # run the unit tests
+make lint        # ruff check + ruff format --check
+make minify      # minify templates
+```
