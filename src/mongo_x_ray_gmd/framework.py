@@ -65,7 +65,7 @@ class Framework(BaseFramework):
             content = f.read()
             try:
                 objects = load_json(content)
-            except Exception as ex:  # pylint: disable=broad-exception-caught
+            except Exception as ex:
                 self._logger.error(red(f"Failed to parse the getMongoData output as JSON: {ex}"))
                 return
 
@@ -77,14 +77,14 @@ class Framework(BaseFramework):
                 for item in self._items:
                     try:
                         item.test(obj)
-                    except Exception as e:  # pylint: disable=broad-exception-caught
+                    except Exception as e:
                         self._logger.warning(yellow(f"GMD analysis item '{item.name}' failed: {e}"))
                         continue
 
             for item in self._items:
                 try:
                     item.finalize_analysis()
-                except Exception as e:  # pylint: disable=broad-exception-caught
+                except Exception as e:
                     self._logger.warning(yellow(f"GMD analysis item '{item.name}' finalization failed: {e}"))
                     continue
 
@@ -97,16 +97,16 @@ class Framework(BaseFramework):
         # Enrich all test results with matched risks before building summary
         for item in self._items:
             try:
-                from mongo_x_ray.risk_register import enrich_test_results  # pylint: disable=import-outside-toplevel
+                from mongo_x_ray.risk_register import enrich_test_results
 
-                enrich_test_results(item._test_result)  # pylint: disable=protected-access
-            except Exception:  # pylint: disable=broad-exception-caught
+                enrich_test_results(item._test_result)
+            except Exception:
                 self._logger.debug("Risk register matching not available", exc_info=True)
         summary_item = SummaryItem()
         summary_item.summarize(self._items)
         summary_item.overview(output)
         for i, item in enumerate(self._items):
-            if item._in_complete_flag:  # pylint: disable=protected-access
+            if item._in_complete_flag:
                 self._logger.warning(
                     yellow(f"GMD item '{item.name}' is incomplete because of too many databases/collections.")
                 )
@@ -118,7 +118,7 @@ class Framework(BaseFramework):
                 output.write(f"{item.description}\n\n")
                 output.write(f"[Review Raw Results &rarr;](#{review_title_id})\n\n")
                 item.test_result_markdown(output)
-            except Exception as e:  # pylint: disable=broad-exception-caught
+            except Exception as e:
                 self._logger.warning(yellow(f"Failed to generate markdown for GMD item '{item.name}': {e}"))
                 continue
 
@@ -131,6 +131,6 @@ class Framework(BaseFramework):
                 output.write(f"### {review_title}\n\n")
                 output.write(f"[&larr; Review Test Results](#{title_id})\n\n")
                 item.review_results_markdown(output)
-            except Exception as e:  # pylint: disable=broad-exception-caught
+            except Exception as e:
                 self._logger.warning(yellow(f"Failed to generate review markdown for GMD item '{item.name}': {e}"))
                 continue

@@ -14,7 +14,7 @@ from mongo_x_ray_hc.rules.base_rule import BaseRule
 from mongo_x_ray_gmd.shared import GmdEvents
 
 
-class BaseItem:  # pylint: disable=too-many-instance-attributes
+class BaseItem:
     def __init__(self, output_folder: str, config, **_kwargs) -> None:
         self.config: dict = config
         self._output_file = os.path.join(output_folder, f"{self.__class__.__name__}.json")
@@ -78,7 +78,7 @@ class BaseItem:  # pylint: disable=too-many-instance-attributes
                 for func in funcs:
                     try:
                         func(block)
-                    except Exception as e:  # pylint: disable=broad-exception-caught
+                    except Exception as e:
                         self._logger.warning(yellow("Error in subscribed function for event %s: %s"), event.value, e)
                 self._fired_events.add(event)
 
@@ -87,7 +87,7 @@ class BaseItem:  # pylint: disable=too-many-instance-attributes
             if events.issubset(self._fired_events) and current_event in events:
                 try:
                     func()
-                except Exception as e:  # pylint: disable=broad-exception-caught
+                except Exception as e:
                     self._logger.warning("Error in subscribed all-events function for events %s: %s", events, e)
 
     @property
