@@ -22,6 +22,7 @@ logger = logging.getLogger(__name__)
 
 class GmdPlugin(Plugin):
     name = "gmd"
+    distribution = "mongo-x-ray-gmd"
     help = "Analyze a getMongoData output file"
     description = """
 Analyze the JSON output produced by MongoDB's getMongoData script.
