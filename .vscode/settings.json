@@ -5,7 +5,6 @@
         "${workspaceFolder}/../ce-mongo-x-ray/src",
         "${workspaceFolder}/../mongo-x-ray-hc/src"
     ],
-    "ruff.format": true,
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
         "source.fixAll.ruff": "explicit",
