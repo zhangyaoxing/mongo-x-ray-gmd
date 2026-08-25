@@ -4,6 +4,8 @@
 
 getMongoData analysis plugin for [x-ray](https://github.com/mongodb-ps/ce-mongo-x-ray).
 
+This plugin depends on `mongo-x-ray-hc`.
+
 ## Install
 
 ```bash
