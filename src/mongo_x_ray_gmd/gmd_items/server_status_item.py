@@ -7,6 +7,7 @@ from mongo_x_ray_hc.parsers.query_targeting_parser import QueryTargetingParser
 from mongo_x_ray_hc.rules.cache_rule import CacheRule
 from mongo_x_ray_hc.rules.connections_rule import ConnectionsRule
 from mongo_x_ray_hc.rules.query_targeting_rule import QueryTargetingRule
+from mongo_x_ray_hc.rules.snapshot_window_rule import SnapshotWindowRule
 from mongo_x_ray_hc.rules.write_concern_rule import WriteConcernRule
 
 from mongo_x_ray_gmd.gmd_items.base_item import BaseItem
@@ -18,6 +19,7 @@ class ServerStatusItem(BaseItem):
         super().__init__(output_folder, config, **kwargs)
         self.name: str = "Server Status"
         self._server_status: Optional[dict[str, Any]] = None
+        self._server_parameters: Optional[dict[str, Any]] = None
         self._query_targeting: Optional[dict[str, Any]] = None
         self._connections: Optional[dict[str, Any]] = None
         self._wt_cache: Optional[dict[str, Any]] = None
@@ -25,9 +27,13 @@ class ServerStatusItem(BaseItem):
         self._rules["connections"] = ConnectionsRule(config)
         self._rules["cache"] = CacheRule(config)
         self._rules["write_concern"] = WriteConcernRule(config)
+        self._rules["snapshot_window"] = SnapshotWindowRule(config)
 
         def get_server_status(block):
             self._server_status = block.get("output", {})
+
+        def get_server_parameters(block):
+            self._server_parameters = block.get("output", {})
 
         def process_server_status():
             if self._server_status and self._server_status["process"] == "mongod":
@@ -43,12 +49,17 @@ class ServerStatusItem(BaseItem):
                     self._server_status, extra_info={"host": self._hostname}
                 )
                 self.append_test_results(test_result)
+                test_result, _ = self._rules["snapshot_window"].apply(
+                    self._server_parameters or {}, extra_info={"host": self._hostname}
+                )
+                self.append_test_results(test_result)
             test_result, self._connections = self._rules["connections"].apply(
                 self._server_status, extra_info={"host": self._hostname}
             )
             self.append_test_results(test_result)
 
         self.watch_one(GmdEvents.SERVER_STATUS_INFO, get_server_status)
+        self.watch_one(GmdEvents.SERVER_PARAMETERS, get_server_parameters)
 
         self.watch_all({GmdEvents.SERVER_STATUS_INFO, GmdEvents.ISMASTER, GmdEvents.HOST_INFO}, process_server_status)
 
