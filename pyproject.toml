@@ -11,6 +11,8 @@ requires-python = ">=3.10,<4"
 dependencies = [
   "mongo-x-ray>=2.0.0",
   "mongo-x-ray-hc>=2.0.0",
+  "pymongo>=4.0",
+  "python-dateutil>=2.9.0",
 ]
 
 [project.entry-points."mongo_x_ray.plugins"]
