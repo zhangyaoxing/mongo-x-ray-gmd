@@ -6,6 +6,7 @@ from mongo_x_ray_hc.parsers.conn_parser import ConnParser
 from mongo_x_ray_hc.parsers.query_targeting_parser import QueryTargetingParser
 from mongo_x_ray_hc.rules.cache_rule import CacheRule
 from mongo_x_ray_hc.rules.connections_rule import ConnectionsRule
+from mongo_x_ray_hc.rules.ftdc_rule import FtdcRule
 from mongo_x_ray_hc.rules.query_targeting_rule import QueryTargetingRule
 from mongo_x_ray_hc.rules.sbe_rule import SbeRule
 from mongo_x_ray_hc.rules.snapshot_window_rule import SnapshotWindowRule
@@ -30,6 +31,7 @@ class ServerStatusItem(BaseItem):
         self._rules["write_concern"] = WriteConcernRule(config)
         self._rules["snapshot_window"] = SnapshotWindowRule(config)
         self._rules["sbe"] = SbeRule(config)
+        self._rules["ftdc"] = FtdcRule(config)
 
         def get_server_status(block):
             self._server_status = block.get("output", {})
@@ -58,6 +60,10 @@ class ServerStatusItem(BaseItem):
                 test_result, _ = self._rules["sbe"].apply(
                     self._server_parameters or {},
                     extra_info={"host": self._hostname, "version": self._server_version},
+                )
+                self.append_test_results(test_result)
+                test_result, _ = self._rules["ftdc"].apply(
+                    self._server_parameters or {}, extra_info={"host": self._hostname}
                 )
                 self.append_test_results(test_result)
             test_result, self._connections = self._rules["connections"].apply(
