@@ -64,14 +64,14 @@ class SummaryItem:
         # detected, so it is omitted from the summary table otherwise.
         if self._risk_available:
             output.write(
-                '| <span data-sortable="true">Category</span>{300} '
+                '| <span data-sortable="true">Category</span>{400} '
                 '| <span data-sortable="true">Count</span>{100} '
                 '| <span data-sortable="false">Known Risks</span>{150} |\n'
             )
             output.write("|---:|:---:|:---|\n")
         else:
             output.write(
-                '| <span data-sortable="true">Category</span>{300} | <span data-sortable="true">Count</span>{100} |\n'
+                '| <span data-sortable="true">Category</span>{400} | <span data-sortable="true">Count</span>{100} |\n'
             )
             output.write("|---:|:---:|\n")
         for title, count in self._summary_title.items():
