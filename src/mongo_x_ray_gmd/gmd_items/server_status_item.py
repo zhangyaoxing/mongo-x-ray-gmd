@@ -7,6 +7,7 @@ from mongo_x_ray_hc.parsers.query_targeting_parser import QueryTargetingParser
 from mongo_x_ray_hc.rules.cache_rule import CacheRule
 from mongo_x_ray_hc.rules.connections_rule import ConnectionsRule
 from mongo_x_ray_hc.rules.query_targeting_rule import QueryTargetingRule
+from mongo_x_ray_hc.rules.write_concern_rule import WriteConcernRule
 
 from mongo_x_ray_gmd.gmd_items.base_item import BaseItem
 from mongo_x_ray_gmd.shared import GmdEvents
@@ -23,6 +24,7 @@ class ServerStatusItem(BaseItem):
         self._rules["query_targeting"] = QueryTargetingRule(config)
         self._rules["connections"] = ConnectionsRule(config)
         self._rules["cache"] = CacheRule(config)
+        self._rules["write_concern"] = WriteConcernRule(config)
 
         def get_server_status(block):
             self._server_status = block.get("output", {})
@@ -34,6 +36,10 @@ class ServerStatusItem(BaseItem):
                 )
                 self.append_test_results(test_result)
                 test_result, self._wt_cache = self._rules["cache"].apply(
+                    self._server_status, extra_info={"host": self._hostname}
+                )
+                self.append_test_results(test_result)
+                test_result, _ = self._rules["write_concern"].apply(
                     self._server_status, extra_info={"host": self._hostname}
                 )
                 self.append_test_results(test_result)
