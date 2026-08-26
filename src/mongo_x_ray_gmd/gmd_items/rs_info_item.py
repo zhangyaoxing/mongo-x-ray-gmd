@@ -12,6 +12,7 @@ from typing import Optional, TextIO
 
 from mongo_x_ray_hc.parsers.rs_details_parser import RSDetailsParser
 from mongo_x_ray_hc.parsers.rs_overview_parser import RSOverviewParser
+from mongo_x_ray_hc.rules.chained_replication_rule import ChainedReplicationRule
 from mongo_x_ray_hc.rules.journaling_rule import JournalingRule
 from mongo_x_ray_hc.rules.oplog_window_rule import OplogWindowRule
 from mongo_x_ray_hc.rules.rs_config_rule import RSConfigRule
@@ -29,10 +30,12 @@ class RSInfoItem(BaseItem):
         self._rs_config: Optional[dict] = None
         self._server_status: Optional[dict] = None
         self._replication_info: Optional[dict] = None
+        self._server_parameters: Optional[dict] = None
         self._oplog_info: Optional[dict] = None
         self._rules["rs_status"] = RSStatusRule(config)
         self._rules["rs_config"] = RSConfigRule(config)
         self._rules["journaling"] = JournalingRule(config)
+        self._rules["chained_replication"] = ChainedReplicationRule(config)
         self._rules["oplog_window"] = OplogWindowRule(config)
 
         def get_replica_status(block):
@@ -53,6 +56,9 @@ class RSInfoItem(BaseItem):
         def get_server_status(block):
             self._server_status = block.get("output", {})
 
+        def get_server_parameters(block):
+            self._server_parameters = block.get("output", {})
+
         def get_replica_info(block):
             self._replication_info = block.get("output", {})
 
@@ -60,6 +66,22 @@ class RSInfoItem(BaseItem):
         self.watch_one(GmdEvents.REPLICA_SET_CONFIG, get_replica_set_config)
         self.watch_one(GmdEvents.REPLICA_INFO, get_replica_info)
         self.watch_one(GmdEvents.SERVER_STATUS_INFO, get_server_status)
+        self.watch_one(GmdEvents.SERVER_PARAMETERS, get_server_parameters)
+
+        def analyze_chained_replication():
+            test_result, _ = self._rules["chained_replication"].apply(
+                {
+                    "config": self._rs_config,
+                    "server_parameters": self._server_parameters,
+                }
+            )
+            self.append_test_results(test_result)
+
+        chained_replication_events = {
+            GmdEvents.REPLICA_SET_CONFIG,
+            GmdEvents.SERVER_PARAMETERS,
+        }
+        self.watch_all(chained_replication_events, analyze_chained_replication)
 
         def analyze_oplog_window():
             time_delta = (self._replication_info or {}).get("timeDiff", 0)
