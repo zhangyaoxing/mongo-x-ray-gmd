@@ -12,6 +12,7 @@ from typing import Optional, TextIO
 
 from mongo_x_ray_hc.parsers.rs_details_parser import RSDetailsParser
 from mongo_x_ray_hc.parsers.rs_overview_parser import RSOverviewParser
+from mongo_x_ray_hc.rules.journaling_rule import JournalingRule
 from mongo_x_ray_hc.rules.oplog_window_rule import OplogWindowRule
 from mongo_x_ray_hc.rules.rs_config_rule import RSConfigRule
 from mongo_x_ray_hc.rules.rs_status_rule import RSStatusRule
@@ -31,6 +32,7 @@ class RSInfoItem(BaseItem):
         self._oplog_info: Optional[dict] = None
         self._rules["rs_status"] = RSStatusRule(config)
         self._rules["rs_config"] = RSConfigRule(config)
+        self._rules["journaling"] = JournalingRule(config)
         self._rules["oplog_window"] = OplogWindowRule(config)
 
         def get_replica_status(block):
@@ -44,6 +46,8 @@ class RSInfoItem(BaseItem):
             # compared to the one returned by rs.conf() in mongo shell.
             # We need to add this layer for the rule to work properly.
             test_result, _ = self._rules["rs_config"].apply({"config": self._rs_config})
+            self.append_test_results(test_result)
+            test_result, _ = self._rules["journaling"].apply({"config": self._rs_config})
             self.append_test_results(test_result)
 
         def get_server_status(block):
