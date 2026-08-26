@@ -79,8 +79,10 @@ class SummaryItem:
             mr = self._title_risk.get(title)
             if mr:
                 rid = html_mod.escape(str(mr.get("id", "")))
-                rname = html_mod.escape(str(mr.get("name", "")))
-                rdesc = html_mod.escape(str(mr.get("description", "")))
+                rname = html_mod.escape(str(mr.get("name", ""))).replace("\r\n", "<br>").replace("\n", "<br>")
+                rdesc = html_mod.escape(str(mr.get("description", ""))).replace("\r\n", "<br>").replace(
+                    "\n", "<br>"
+                )
                 risk_html = (
                     f'<span class="risk-badge">RISK-{rid}'
                     f'<span class="risk-tooltip">'
