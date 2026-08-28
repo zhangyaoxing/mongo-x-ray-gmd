@@ -11,12 +11,11 @@ THIS MATERIAL IS PROVIDED "AS IS" WITHOUT WARRANTY OR LIABILITY.
 from typing import Optional
 
 from mongo_x_ray.parsers.base_parser import BaseParser
+from mongo_x_ray_gmd.gmd_items.base_item import BaseItem
+from mongo_x_ray_gmd.shared import GmdEvents
 from mongo_x_ray_hc.parsers.security_parser import SecurityParser
 from mongo_x_ray_hc.rules.security_rule import SecurityRule
 from mongo_x_ray_hc.rules.tls_protocol_rule import TlsProtocolRule
-
-from mongo_x_ray_gmd.gmd_items.base_item import BaseItem
-from mongo_x_ray_gmd.shared import GmdEvents
 
 
 class SecurityItem(BaseItem):

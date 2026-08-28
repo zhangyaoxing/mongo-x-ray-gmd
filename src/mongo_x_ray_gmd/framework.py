@@ -14,7 +14,6 @@ from typing import TextIO
 from mongo_x_ray.framework import BaseFramework
 from mongo_x_ray.shared import str_to_md_id, to_json
 from mongo_x_ray.utils import bold, cyan, env, green, load_classes, red, yellow
-
 from mongo_x_ray_gmd.gmd_items.summary_item import SummaryItem
 from mongo_x_ray_gmd.shared import load_json
 

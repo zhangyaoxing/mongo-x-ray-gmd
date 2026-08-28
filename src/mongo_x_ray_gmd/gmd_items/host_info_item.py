@@ -1,11 +1,10 @@
 from mongo_x_ray.parsers.base_parser import BaseParser
+from mongo_x_ray_gmd.gmd_items.base_item import BaseItem
+from mongo_x_ray_gmd.shared import GmdEvents
 from mongo_x_ray_hc.parsers.host_info_parser import HostInfoParser
 from mongo_x_ray_hc.rules.fs_type_rule import FSTypeRule
 from mongo_x_ray_hc.rules.host_info_rule import HostInfoRule
 from mongo_x_ray_hc.rules.numa_rule import NumaRule
-
-from mongo_x_ray_gmd.gmd_items.base_item import BaseItem
-from mongo_x_ray_gmd.shared import GmdEvents
 
 
 class HostInfoItem(BaseItem):

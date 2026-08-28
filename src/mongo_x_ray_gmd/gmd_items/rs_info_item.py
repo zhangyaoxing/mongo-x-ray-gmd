@@ -10,6 +10,8 @@ THIS MATERIAL IS PROVIDED "AS IS" WITHOUT WARRANTY OR LIABILITY.
 
 from typing import Optional, TextIO
 
+from mongo_x_ray_gmd.gmd_items.base_item import BaseItem
+from mongo_x_ray_gmd.shared import GmdEvents
 from mongo_x_ray_hc.parsers.rs_details_parser import RSDetailsParser
 from mongo_x_ray_hc.parsers.rs_overview_parser import RSOverviewParser
 from mongo_x_ray_hc.rules.chained_replication_rule import ChainedReplicationRule
@@ -17,9 +19,6 @@ from mongo_x_ray_hc.rules.journaling_rule import JournalingRule
 from mongo_x_ray_hc.rules.oplog_window_rule import OplogWindowRule
 from mongo_x_ray_hc.rules.rs_config_rule import RSConfigRule
 from mongo_x_ray_hc.rules.rs_status_rule import RSStatusRule
-
-from mongo_x_ray_gmd.gmd_items.base_item import BaseItem
-from mongo_x_ray_gmd.shared import GmdEvents
 
 
 class RSInfoItem(BaseItem):

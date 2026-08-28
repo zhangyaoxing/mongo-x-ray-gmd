@@ -11,9 +11,8 @@ THIS MATERIAL IS PROVIDED "AS IS" WITHOUT WARRANTY OR LIABILITY.
 import html as html_mod
 
 from mongo_x_ray.shared import SEVERITY
-from mongo_x_ray_hc.check_items.base_item import colorize_severity
-
 from mongo_x_ray_gmd.gmd_items.base_item import BaseItem
+from mongo_x_ray_hc.check_items.base_item import colorize_severity
 
 
 class SummaryItem:
@@ -80,9 +79,7 @@ class SummaryItem:
             if mr:
                 rid = html_mod.escape(str(mr.get("id", "")))
                 rname = html_mod.escape(str(mr.get("name", ""))).replace("\r\n", "<br>").replace("\n", "<br>")
-                rdesc = html_mod.escape(str(mr.get("description", ""))).replace("\r\n", "<br>").replace(
-                    "\n", "<br>"
-                )
+                rdesc = html_mod.escape(str(mr.get("description", ""))).replace("\r\n", "<br>").replace("\n", "<br>")
                 risk_html = (
                     f'<span class="risk-badge">RISK-{rid}'
                     f'<span class="risk-tooltip">'

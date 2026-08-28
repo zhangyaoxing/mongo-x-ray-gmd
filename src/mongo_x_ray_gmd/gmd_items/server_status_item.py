@@ -1,6 +1,8 @@
 from typing import Any, Optional
 
 from mongo_x_ray.parsers.base_parser import BaseParser
+from mongo_x_ray_gmd.gmd_items.base_item import BaseItem
+from mongo_x_ray_gmd.shared import GmdEvents
 from mongo_x_ray_hc.parsers.cache_parser import CacheParser
 from mongo_x_ray_hc.parsers.conn_parser import ConnParser
 from mongo_x_ray_hc.parsers.query_targeting_parser import QueryTargetingParser
@@ -11,9 +13,6 @@ from mongo_x_ray_hc.rules.query_targeting_rule import QueryTargetingRule
 from mongo_x_ray_hc.rules.sbe_rule import SbeRule
 from mongo_x_ray_hc.rules.snapshot_window_rule import SnapshotWindowRule
 from mongo_x_ray_hc.rules.write_concern_rule import WriteConcernRule
-
-from mongo_x_ray_gmd.gmd_items.base_item import BaseItem
-from mongo_x_ray_gmd.shared import GmdEvents
 
 
 class ServerStatusItem(BaseItem):

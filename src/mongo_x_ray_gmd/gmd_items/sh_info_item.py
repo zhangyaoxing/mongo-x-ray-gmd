@@ -11,12 +11,11 @@ THIS MATERIAL IS PROVIDED "AS IS" WITHOUT WARRANTY OR LIABILITY.
 from typing import Optional, TextIO
 
 from mongo_x_ray.parsers.base_parser import BaseParser
-from mongo_x_ray_hc.parsers.sh_overview_parser import SHOverviewParser
-from mongo_x_ray_hc.rules.shard_mongos_rule import ShardMongosRule
-
 from mongo_x_ray_gmd.gmd_items.base_item import BaseItem
 from mongo_x_ray_gmd.parsers.sh_details_parser import SHDetailsParser
 from mongo_x_ray_gmd.shared import GmdEvents
+from mongo_x_ray_hc.parsers.sh_overview_parser import SHOverviewParser
+from mongo_x_ray_hc.rules.shard_mongos_rule import ShardMongosRule
 
 
 class SHInfoItem(BaseItem):

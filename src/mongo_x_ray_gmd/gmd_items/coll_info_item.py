@@ -12,12 +12,11 @@ from typing import Any
 
 from mongo_x_ray.parsers.base_parser import BaseParser
 from mongo_x_ray.utils import yellow
-from mongo_x_ray_hc.rules.data_size_rule import DataSizeRule
-from mongo_x_ray_hc.rules.fragmentation_rule import FragmentationRule
-
 from mongo_x_ray_gmd.gmd_items.base_item import BaseItem
 from mongo_x_ray_gmd.parsers.coll_stats_parser import CollStatsParser
 from mongo_x_ray_gmd.shared import GmdEvents
+from mongo_x_ray_hc.rules.data_size_rule import DataSizeRule
+from mongo_x_ray_hc.rules.fragmentation_rule import FragmentationRule
 
 
 class CollInfoItem(BaseItem):

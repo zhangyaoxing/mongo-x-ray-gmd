@@ -5,13 +5,13 @@ from abc import abstractmethod
 from typing import Callable, Optional
 
 from bson import json_util
+
 from mongo_x_ray.shared import SEVERITY
 from mongo_x_ray.utils import bold, to_ejson, yellow
 from mongo_x_ray.version import Version
+from mongo_x_ray_gmd.shared import GmdEvents
 from mongo_x_ray_hc.check_items.base_item import colorize_severity
 from mongo_x_ray_hc.rules.base_rule import BaseRule
-
-from mongo_x_ray_gmd.shared import GmdEvents
 
 
 class BaseItem:
@@ -151,8 +151,8 @@ class BaseItem:
             if risk:
                 risk_id = html_mod.escape(str(risk.get("id", "")))
                 risk_name = html_mod.escape(str(risk.get("name", ""))).replace("\r\n", "<br>").replace("\n", "<br>")
-                risk_desc = html_mod.escape(str(risk.get("description", ""))).replace("\r\n", "<br>").replace(
-                    "\n", "<br>"
+                risk_desc = (
+                    html_mod.escape(str(risk.get("description", ""))).replace("\r\n", "<br>").replace("\n", "<br>")
                 )
                 category_cell += (
                     f' <span class="risk-badge">RISK-{risk_id}'
