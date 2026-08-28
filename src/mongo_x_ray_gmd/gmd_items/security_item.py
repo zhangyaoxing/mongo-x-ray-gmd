@@ -13,6 +13,7 @@ from typing import Optional
 from mongo_x_ray.parsers.base_parser import BaseParser
 from mongo_x_ray_hc.parsers.security_parser import SecurityParser
 from mongo_x_ray_hc.rules.security_rule import SecurityRule
+from mongo_x_ray_hc.rules.tls_protocol_rule import TlsProtocolRule
 
 from mongo_x_ray_gmd.gmd_items.base_item import BaseItem
 from mongo_x_ray_gmd.shared import GmdEvents
@@ -24,12 +25,17 @@ class SecurityItem(BaseItem):
         self.name: str = "Security Information"
         self._command_line_opts: Optional[dict] = None
         self._rules["security"] = SecurityRule(config)
+        self._rules["tls_protocol"] = TlsProtocolRule(config)
 
         def get_command_line_opts(block):
             self._command_line_opts = block.get("output", {})
 
         def analyze_security():
             test_result, _ = self._rules["security"].apply(self._command_line_opts, extra_info={"host": self._hostname})
+            self.append_test_results(test_result)
+            test_result, _ = self._rules["tls_protocol"].apply(
+                self._command_line_opts, extra_info={"host": self._hostname}
+            )
             self.append_test_results(test_result)
 
         self.watch_one(GmdEvents.COMMAND_LINE_INFO, get_command_line_opts)
