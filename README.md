@@ -1,6 +1,7 @@
 # mongo-x-ray-gmd
 
 [![CI](https://github.com/zhangyaoxing/mongo-x-ray-gmd/actions/workflows/ci.yml/badge.svg)](https://github.com/zhangyaoxing/mongo-x-ray-gmd/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/mongo-x-ray-gmd.svg)](https://pypi.org/project/mongo-x-ray-gmd/)
 
 getMongoData analysis plugin for [x-ray](https://github.com/mongodb-ps/ce-mongo-x-ray).
 
