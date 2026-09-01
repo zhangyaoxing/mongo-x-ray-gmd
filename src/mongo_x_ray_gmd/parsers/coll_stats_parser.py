@@ -74,7 +74,7 @@ class CollStatsParser(BaseParser):
 
             # display values
             ns_str = (
-                f"{escape_markdown(ns)} <pre>{format_json_md(shard_key, indent=2)}</pre>"
+                f"{escape_markdown(ns)}<br><pre>{format_json_md(shard_key, indent=2)}</pre>"
                 if shard_key
                 else escape_markdown(ns)
             )
