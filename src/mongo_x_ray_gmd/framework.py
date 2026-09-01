@@ -99,8 +99,11 @@ class Framework(BaseFramework):
             from mongo_x_ray_risk import enrich_test_results, has_risks
 
             risk_available = has_risks()
-            for item in self._items:
-                enrich_test_results(item._test_result)
+            if risk_available:
+                # The vector search can take a while; let the user know what is happening.
+                self._logger.info("Searching for known risks...")
+                for item in self._items:
+                    enrich_test_results(item._test_result)
         except Exception:
             self._logger.debug("Risk register matching not available", exc_info=True)
         summary_item = SummaryItem(risk_available=risk_available)
