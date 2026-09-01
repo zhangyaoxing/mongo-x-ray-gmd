@@ -116,13 +116,15 @@ class CollStatsParser(BaseParser):
                     sh_avg_obj_sizes.append(f"{short_name}: {format_size(sh_avg_obj_size)}")
                     sh_fragmentation_ratios.append(f"{short_name}: {sh_frag_ratio}")
                     sh_caches.append(f"{short_name}: {format_size(sh_bytes_in_cache)} / {sh_cache_ratio}")
-                count_str = f"{count_str}<pre>" + "<br>".join(sh_counts) + "</pre>"
-                size_str = f"{size_str}<pre>" + "<br>".join(sh_sizes) + "</pre>"
-                storage_size_str = f"{storage_size_str}<pre>" + "<br>".join(sh_storage_sizes) + "</pre>"
-                total_index_size_str = f"{total_index_size_str}<pre>" + "<br>".join(sh_total_index_sizes) + "</pre>"
-                avg_obj_size_str = f"{avg_obj_size_str}<pre>" + "<br>".join(sh_avg_obj_sizes) + "</pre>"
-                frag_ratio_str = f"{frag_ratio_str}<pre>" + "<br>".join(sh_fragmentation_ratios) + "</pre>"
-                cache_sum_str = f"{cache_sum_str}<pre>" + "<br>".join(sh_caches) + "</pre>"
+                # A <br> after each value keeps the value and the per-shard
+                # distribution on separate lines when the table is copied.
+                count_str = f"{count_str}<br><pre>" + "<br>".join(sh_counts) + "</pre>"
+                size_str = f"{size_str}<br><pre>" + "<br>".join(sh_sizes) + "</pre>"
+                storage_size_str = f"{storage_size_str}<br><pre>" + "<br>".join(sh_storage_sizes) + "</pre>"
+                total_index_size_str = f"{total_index_size_str}<br><pre>" + "<br>".join(sh_total_index_sizes) + "</pre>"
+                avg_obj_size_str = f"{avg_obj_size_str}<br><pre>" + "<br>".join(sh_avg_obj_sizes) + "</pre>"
+                frag_ratio_str = f"{frag_ratio_str}<br><pre>" + "<br>".join(sh_fragmentation_ratios) + "</pre>"
+                cache_sum_str = f"{cache_sum_str}<br><pre>" + "<br>".join(sh_caches) + "</pre>"
             rows.append(
                 [
                     ns_str,

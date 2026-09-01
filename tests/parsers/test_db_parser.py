@@ -94,7 +94,7 @@ def test_db_parser_sharded():
 
     assert dbs_table["rows"][1][0] == "config"
     assert dbs_table["rows"][1][1][0].startswith("5.00 MB")
-    assert dbs_table["rows"][1][2][0].startswith("3.80 MB<pre>s0: 980.00 KB<br>s1: 896.00 KB<br>c: 1.96 MB</pre>")
+    assert dbs_table["rows"][1][2][0].startswith("3.80 MB<br><pre>s0: 980.00 KB<br>s1: 896.00 KB<br>c: 1.96 MB</pre>")
     assert not dbs_table["rows"][1][3]
     assert dbs_table["rows"][1][4] == "N/A"
     assert dbs_table["rows"][1][5] == 8
@@ -189,7 +189,7 @@ def test_db_parser_non_sharded():
 
     assert dbs_table["rows"][1][0] == "config"
     assert dbs_table["rows"][1][1][0].startswith("5.00 MB")
-    assert dbs_table["rows"][1][2][0].startswith("3.80 MB<pre>s0: 980.00 KB<br>s1: 896.00 KB<br>c: 1.96 MB</pre>")
+    assert dbs_table["rows"][1][2][0].startswith("3.80 MB<br><pre>s0: 980.00 KB<br>s1: 896.00 KB<br>c: 1.96 MB</pre>")
     assert dbs_table["rows"][1][3] == "N/A"
     assert dbs_table["rows"][1][4] == "N/A"
     assert dbs_table["rows"][1][5] == 8

@@ -81,7 +81,9 @@ class DBParser(BaseParser):
             for shard, size in db.get("shards", {}).items():
                 sharded_sizes.append(f"{mapper.map(shard)}: {format_size(size)}")
             if len(sharded_sizes) > 0:
-                storage_size += "<pre>" + "<br>".join(sharded_sizes) + "</pre>"
+                # A <br> keeps the value and the per-shard distribution on
+                # separate lines when the table is copied.
+                storage_size += "<br><pre>" + "<br>".join(sharded_sizes) + "</pre>"
             if sharded_dbs is None:
                 partitioned = "N/A"
                 primary_db = "N/A"
