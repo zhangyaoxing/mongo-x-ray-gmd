@@ -26,9 +26,9 @@ class SHDetailsParser(BaseParser):
         for shard in data["shards"]:
             sh_name = shard["_id"]
             hosts = shard["host"].split("/")[1]
-            rows.append([sh_name, hosts])
+            rows.append([f"`{sh_name}`", f"`{hosts}`"])
         csrs: list[str] = data["csrs"].split("/")
-        rows.append(csrs)
+        rows.append([f"`{name}`" for name in csrs])
 
         details_table = {
             "type": "table",

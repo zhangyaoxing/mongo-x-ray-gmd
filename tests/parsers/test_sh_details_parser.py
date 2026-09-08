@@ -37,7 +37,7 @@ def test_sh_details_parser() -> None:
         {"text": "Hosts", "width": "*"},
     ]
     assert details_table["rows"] == [
-        ["shard01", "localhost:30018,localhost:30019,localhost:30020"],
-        ["shard02", "localhost:30021,localhost:30022,localhost:30023"],
-        ["configRepl", "localhost:30024"],
+        ["`shard01`", "`localhost:30018,localhost:30019,localhost:30020`"],
+        ["`shard02`", "`localhost:30021,localhost:30022,localhost:30023`"],
+        ["`configRepl`", "`localhost:30024`"],
     ]
