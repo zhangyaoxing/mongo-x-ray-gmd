@@ -11,6 +11,9 @@ The getMongoData analysis plugin for x-ray.
 ### Fixed
 - **Sharded collection rows**: a `<br>` is now inserted between the namespace and the shard key, and after values that are followed by shard distributions — the table cells no longer run together.
 
+### Dependencies
+- Requires `mongo-x-ray-hc>=2.1.0`: the healthcheck plugin owns the shared issue catalog (`mongo_x_ray_hc.issues`) and hc 2.0.0 imports `mongo_x_ray.issues`, which core 2.1.0 no longer ships.
+
 ### Inherited from core (applies to every gmd report)
 - **Copy icons** for inline code, code blocks (top-right icon instead of the "Copy" text) and table `<pre>` blocks, preserving line breaks and indentation when copied.
 - **Output folder naming**: report folders are prefixed with the plugin name (`gmd-default-<timestamp>`, `gmd-<hostname>-default-<timestamp>`), including with `--discover`.
