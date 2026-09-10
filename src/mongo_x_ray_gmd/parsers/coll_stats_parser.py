@@ -73,11 +73,7 @@ class CollStatsParser(BaseParser):
             cache_ratio = (bytes_in_cache / size) if size > 0 else 0
 
             # display values
-            ns_str = (
-                f"`{ns}`<br><pre>{format_json_md(shard_key, indent=2)}</pre>"
-                if shard_key
-                else f"`{ns}`"
-            )
+            ns_str = f"`{ns}`<br><pre>{format_json_md(shard_key, indent=2)}</pre>" if shard_key else f"`{ns}`"
             count_str = f"{count}"
             size_str = format_size(size)
             storage_size_str = format_size(storage_size)
