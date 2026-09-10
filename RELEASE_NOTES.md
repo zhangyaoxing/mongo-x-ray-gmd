@@ -1,39 +1,20 @@
 # mongo-x-ray-gmd — Release Notes
 
-The getMongoData analysis plugin for x-ray (39 commits since its first commit on 2026-08-23).
+The getMongoData analysis plugin for x-ray.
 
-## Highlights
+## 2.1.0
 
-- **Initial plugin extraction (v2.0.0)** — split the getMongoData analysis out of the core into the `mongo-x-ray-gmd` plugin, with the health-check rules and core imported as `mongo_x_ray_hc` / `mongo_x_ray`.
-- **Replica set health checks** — new alerts for `writeConcernMajorityJournalDefault: false`, chained replication, non-default write concern (`w` ≠ majority) and a zero write-concern timeout.
-- **Server parameter checks** — new alerts for a high `minSnapshotHistoryWindowInSeconds`, SBE enabled on MongoDB 6.0/7.0, and FTDC configuration issues.
-- **Security checks** — new alerts for insecure (TLS1_0/TLS1_1) or unrecognizable disabled TLS protocols.
-- **Risk register integration** — the risk register (`mongo_x_ray_risk`) is now an optional plugin; the "Known Risks" summary column is hidden when no risk register is detected.
-- **Report fixes** — known-risk tooltips keep multi-line descriptions on a single table line (`<br>`), fixing broken markdown tables.
+### Added
+- **Copyable values**: important table contents are wrapped in backticks, so the new report copy icons can copy them with one click.
+- **Risk scan logging**: a message is logged before the risk register vector search, so a long-running enrichment is visible in the output.
 
-## Changes by area
+### Fixed
+- **Sharded collection rows**: a `<br>` is now inserted between the namespace and the shard key, and after values that are followed by shard distributions — the table cells no longer run together.
 
-**Features**
-- Alert when `writeConcernMajorityJournalDefault` is `false` (durability risk)
-- Alert when chained replication is possible (`chainingAllowed` or override parameter)
-- Alert when the default write concern is not `majority`, or its `wtimeout` is 0
-- Alert on high `minSnapshotHistoryWindowInSeconds` (MongoDB 5.0+, recommended 5s)
-- Alert when SBE is enabled on MongoDB 6.0/7.0 (`internalQueryForceClassicEngine` / `internalQueryFrameworkControl`)
-- Alert on FTDC issues: `diagnosticDataCollectionEnabled=false`, samples-per-chunk below 300
-- Alert on insecure or unrecognizable TLS protocols in `net.tls.disabledProtocols`
-- Declare the plugin distribution for `x-ray <name> --version`
+### Inherited from core (applies to every gmd report)
+- **Copy icons** for inline code, code blocks (top-right icon instead of the "Copy" text) and table `<pre>` blocks, preserving line breaks and indentation when copied.
+- **Output folder naming**: report folders are prefixed with the plugin name (`gmd-default-<timestamp>`, `gmd-<hostname>-default-<timestamp>`), including with `--discover`.
 
-**Fixes**
-- Keep risk tooltips on one line in markdown tables
+## 2.0.0
 
-**Refactors**
-- Import core as `mongo_x_ray`; health-check rules as `mongo_x_ray_hc`; package renamed to `mongo_x_ray_gmd`
-- Risk register treated as an optional plugin
-
-**CI / Tooling**
-- GitHub Actions CI with ruff lint target; CodeQL enabled
-- Publish to (Test)PyPI on release via trusted publishing
-- VSCode ruff/pyright config; explicit direct dependencies; deterministic isort; unified 2026 copyright headers
-
-**Docs**
-- README rewrite: usage, command parameters, analysis items, MongoDB 5.0+ compatibility, PyPI badge
+The getMongoData analysis was split out of the core into the `mongo-x-ray-gmd` plugin, reusing the health-check rules and the shared `mongo_x_ray` core. It added replica-set health checks (journaling, chained replication, write concern), server parameter checks (snapshot window, SBE, FTDC configuration), security checks (TLS protocols), optional risk-register integration with a Known Risks summary column, and CI/CodeQL/PyPI publishing.
