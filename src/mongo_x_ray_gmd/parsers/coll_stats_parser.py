@@ -8,7 +8,7 @@ YOU ARE RESPONSIBLE FOR TESTING, VALIDATING, AND SECURING THIS CODE WITHIN YOUR 
 THIS MATERIAL IS PROVIDED "AS IS" WITHOUT WARRANTY OR LIABILITY.
 """
 
-from mongo_x_ray.utils import escape_markdown, format_json_md, format_size
+from mongo_x_ray.utils import format_json_md, format_size
 from mongo_x_ray_gmd.parsers.base_parser import BaseParser
 from mongo_x_ray_gmd.shared import ShardNameMapper
 
@@ -74,9 +74,9 @@ class CollStatsParser(BaseParser):
 
             # display values
             ns_str = (
-                f"{escape_markdown(ns)}<br><pre>{format_json_md(shard_key, indent=2)}</pre>"
+                f"`{ns}`<br><pre>{format_json_md(shard_key, indent=2)}</pre>"
                 if shard_key
-                else escape_markdown(ns)
+                else f"`{ns}`"
             )
             count_str = f"{count}"
             size_str = format_size(size)
