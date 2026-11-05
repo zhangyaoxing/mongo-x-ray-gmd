@@ -1,5 +1,12 @@
 # mongo-x-ray-gmd — Release Notes
 
+## 2.1.2
+
+Version alignment with the x-ray 2.1.2 release — one configuration key is added, the plugin's own behaviour is unchanged.
+
+### Changed
+- **Snapshot history window threshold is configurable**: gmd reuses the health check rule, which now reads `min_snapshot_history_window_seconds` from `gmd.item_config.ServerStatusItem` (default `5`) instead of a constant.
+
 ## 2.1.1
 
 Dependency and automation release — the plugin's own behaviour is unchanged.
