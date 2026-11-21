@@ -10,9 +10,8 @@ THIS MATERIAL IS PROVIDED "AS IS" WITHOUT WARRANTY OR LIABILITY.
 
 import html as html_mod
 
-from mongo_x_ray.shared import SEVERITY
+from mongo_x_ray.shared import SEVERITY, severity_badge
 from mongo_x_ray_gmd.gmd_items.base_item import BaseItem
-from mongo_x_ray_hc.check_items.base_item import colorize_severity
 
 
 class SummaryItem:
@@ -48,7 +47,7 @@ class SummaryItem:
 
     def overview(self, output) -> None:
         def format_header(severity: SEVERITY):
-            return f"<b style='color: {colorize_severity(severity)}'>{severity.name}</b>"
+            return severity_badge(severity)
 
         output.write("#### By Severity\n\n")
         output.write(

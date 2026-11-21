@@ -16,11 +16,10 @@ from typing import Callable, Optional
 
 from bson import json_util
 
-from mongo_x_ray.shared import SEVERITY
+from mongo_x_ray.shared import SEVERITY, severity_badge
 from mongo_x_ray.utils import bold, to_ejson, yellow
 from mongo_x_ray.version import Version
 from mongo_x_ray_gmd.shared import GmdEvents
-from mongo_x_ray_hc.check_items.base_item import colorize_severity
 from mongo_x_ray_hc.rules.base_rule import BaseRule
 
 
@@ -151,11 +150,7 @@ class BaseItem:
         output.write("|:----------:|:----------:|:----------:|---------|---------|\n")
         for idx, item in enumerate(self._test_result):
             severity = item["severity"]
-            severity_cell = (
-                f'<span data-sort-value="{severity.value}">'
-                f"<b style='color: {colorize_severity(severity)}'>"
-                f" {severity.name} </b></span>"
-            )
+            severity_cell = f'<span data-sort-value="{severity.value}">{severity_badge(severity)}</span>'
             category_cell = item["title"]
             risk = item.get("matched_risk")
             if risk:
