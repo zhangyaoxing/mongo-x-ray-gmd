@@ -120,7 +120,7 @@ def page(browser, report_html):
     """Load the report and wait for the dynamically generated outline."""
     page = browser.new_page()
     page.goto(report_html[1].resolve().as_uri(), wait_until="load")
-    # The outline nav is built from h2/h3 headings by JavaScript in window.onload.
+    # The outline nav is built from the h2/h3 headings by the shared post_outline.js.
     page.wait_for_selector("#outline ul a")
     yield page
     page.close()
