@@ -1,5 +1,16 @@
 # mongo-x-ray-gmd — Release Notes
 
+## 2.1.3
+
+### Added
+- **MongoDB report template** (`gmd/mongodb.html`): the report rendered in the MongoDB design system — dark report on the LeafyGreen SideNav, Table, Badge and Typography components, with the icons inlined and no remote stylesheet or webfont.
+- **Severity badges**: severities are MongoDB Badges (HIGH red, MEDIUM yellow, LOW green, INFO light gray) instead of bold coloured text.
+
+### Changed
+- **The outline comes from the shared core script**: gmd's own implementation (built in `window.onload`, with a strict highlight test and hard-coded body margins) is gone, so one outline behaves the same in every module. Clicking an entry lands the heading at the top and highlights that entry.
+- **Chart blocks** get the shared `chart-container` spacing.
+- Requires `mongo-x-ray>=2.1.3` for the shared badge helpers and the report stylesheets.
+
 ## 2.1.2
 
 Version alignment with the x-ray 2.1.2 release — one configuration key is added, the plugin's own behaviour is unchanged.
