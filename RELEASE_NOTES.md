@@ -1,5 +1,12 @@
 # mongo-x-ray-gmd — Release Notes
 
+## 2.1.4
+
+Version alignment with x-ray 2.1.4 — the first published build of the 2.1.3 changes.
+
+`mongo-x-ray==2.1.3` reached PyPI without the MongoDB theme stylesheet, so its reports rendered unstyled and the 2.1.3 plugin packages were never published; 2.1.4 fixes the core packaging and these plugins require `mongo-x-ray>=2.1.4`.
+
+
 ## 2.1.3
 
 ### Added
@@ -9,7 +16,7 @@
 ### Changed
 - **The outline comes from the shared core script**: gmd's own implementation (built in `window.onload`, with a strict highlight test and hard-coded body margins) is gone, so one outline behaves the same in every module. Clicking an entry lands the heading at the top and highlights that entry.
 - **Chart blocks** get the shared `chart-container` spacing.
-- Requires `mongo-x-ray>=2.1.3` for the shared badge helpers and the report stylesheets.
+- Requires `mongo-x-ray>=2.1.4` for the shared badge helpers and the report stylesheets.
 
 ## 2.1.2
 
